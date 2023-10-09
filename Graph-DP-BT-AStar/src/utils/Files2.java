@@ -36,8 +36,8 @@ public class Files2 {
 	}
 	
 	/**
-	 * @param s Una stream
-	 * @param file Un fichero donde guardar los elementos de la stream
+	 * @param s Stream
+	 * @param file A file to store the elements of the stream
 	 */
 	public static void toFile(Stream<String> s, String file) {
 		try {

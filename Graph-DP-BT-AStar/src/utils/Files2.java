@@ -52,9 +52,9 @@ public class Files2 {
 	}
 	
 	/**
-	 * @param file Un fichero
+	 * @param file
 	 * @return Un stream formado por las líneas del fichero
-	 * @exception IllegalArgumentException si no se encuentra el fichero
+	 * @exception IllegalArgumentException file not found
 	 */
 	
 	public static Stream<String> streamFromFile(String file) {

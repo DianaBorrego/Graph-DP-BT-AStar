@@ -1,6 +1,6 @@
 # Graph-DP-BT-AStar
 
-#### DPGraphJ is written in Java
+#### Graph-DP-BT-AStar is written in Java
 
 ## Purpose
 

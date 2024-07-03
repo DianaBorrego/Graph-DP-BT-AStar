@@ -15,13 +15,13 @@ import examples.multiset.MultisetHeuristic;
 import examples.multiset.MultisetVertex;
 import examples.multiset.data.MultisetData;
 import examples.multiset.data.MultisetSolution;
-import graphs.alg.PDR;
+import graphs.alg.DPR;
 import graphs.alg.GreedyOnGraph;
 import graphs.virtual.EGraph;
 import graphs.virtual.EGraph.Type;
 import path.EGraphPath.PathType;
 
-public class TestPD_multiset {
+public class TestDP_multiset {
 
 	public static void main(String[] args) {
 
@@ -56,11 +56,11 @@ public class TestPD_multiset {
 			
 			System.out.println("Greedy = "+r.getWeight()+"  == "+MultisetVertex.getSolution(r));
 			
-			PDR<MultisetVertex, MultisetEdge, ?> pdr = PDR
+			DPR<MultisetVertex, MultisetEdge, ?> pdr = DPR
 					.of(graph, null,null, null, true);
 
 			if (rr.isSolution(r)) {
-				pdr = PDR.of(graph, null,r.getWeight(), r, true);
+				pdr = DPR.of(graph, null,r.getWeight(), r, true);
 			}
 			
 			

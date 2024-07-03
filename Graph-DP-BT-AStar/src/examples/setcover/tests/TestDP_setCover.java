@@ -14,10 +14,10 @@ import examples.setcover.SetCoverHeuristic;
 import examples.setcover.SetCoverVertex;
 import examples.setcover.data.SetCoverData;
 import examples.setcover.data.SetCoverSolution;
-import graphs.alg.PDR;
+import graphs.alg.DPR;
 import graphs.virtual.EGraph;
 
-public class TestPD_setCover {
+public class TestDP_setCover {
 
 	public static void main(String[] args) {
 
@@ -42,8 +42,8 @@ public class TestPD_setCover {
 			System.out.println("\n\n#### DP Algorithm ####");
 
 			// Algoritmo PD
-			PDR<SetCoverVertex, SetCoverEdge,?> pdr = 
-					PDR.of(graph, null,
+			DPR<SetCoverVertex, SetCoverEdge,?> pdr = 
+					DPR.of(graph, null,
 							SetCoverHeuristic.greedy(start,SetCoverData.NUM_SC),null,true);
 			
 			SetCoverSolution sv = SetCoverHeuristic.greedySolution(start,SetCoverData.NUM_SC);

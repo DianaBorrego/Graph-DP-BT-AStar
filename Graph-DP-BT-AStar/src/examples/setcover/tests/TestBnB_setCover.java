@@ -13,10 +13,10 @@ import examples.setcover.SetCoverHeuristic;
 import examples.setcover.SetCoverVertex;
 import examples.setcover.data.SetCoverData;
 import examples.setcover.data.SetCoverSolution;
-import graphs.alg.BT;
+import graphs.alg.BnB;
 import graphs.virtual.EGraph;
 
-public class TestBT_setCover {
+public class TestBnB_setCover {
 
 	public static void main(String[] args) {
 
@@ -38,10 +38,10 @@ public class TestBT_setCover {
 					.heuristic(SetCoverHeuristic::heuristic)
 					.build();
 
-			System.out.println("\n\n#### BT Algorithm ####");
+			System.out.println("\n\n#### BnB Algorithm ####");
 			
-			BT<SetCoverVertex, SetCoverEdge, SetCoverSolution> bta = 
-				BT.of(graph, 
+			BnB<SetCoverVertex, SetCoverEdge, SetCoverSolution> bta = 
+				BnB.of(graph, 
 					SetCoverSolution::of, 
 					SetCoverHeuristic.greedy(start,SetCoverData.NUM_SC),null,true);
 
@@ -53,7 +53,7 @@ public class TestBT_setCover {
 			System.out.println(gp.isPresent()?SetCoverSolution.of(gp.get()):sv);
 			List<SetCoverEdge> ls = bta.optimalPath != null?bta.optimalPath.getEdgeList():null;
 			
-			GraphColors.toDot(bta.outGraph(),"files/setCover/setCoverBTGraph.gv",
+			GraphColors.toDot(bta.outGraph(),"files/setCover/setCoverBnBGraph.gv",
 					v->v.toGraph(),
 					e->e.action().toString(),
 					v->GraphColors.colorIf(Color.red,SetCoverVertex.goal().test(v)),

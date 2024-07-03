@@ -13,7 +13,7 @@ import org.jgrapht.GraphPath;
 import colors.GraphColors;
 import colors.GraphColors.Color;
 import colors.GraphColors.Style;
-import graphs.alg.PDR;
+import graphs.alg.DPR;
 import graphs.alg.GreedyOnGraph;
 import graphs.virtual.EGraph;
 import graphs.virtual.EGraph.Type;
@@ -25,7 +25,7 @@ import examples.knapsack.data.KnapsackSolution;
 import path.EGraphPath.PathType;
 
 
-public class TestPDR_knapsack {
+public class TestDPR_knapsack {
 	
 	
 	public static void main(String[] args) {
@@ -47,8 +47,8 @@ public class TestPDR_knapsack {
 		
 		System.out.println("1 = "+bv);
 		
-		PDR<KnapsackVertex, KnapsackEdge, KnapsackSolution> ms = 
-				PDR.of(graph,null,bv,path,true);
+		DPR<KnapsackVertex, KnapsackEdge, KnapsackSolution> ms = 
+				DPR.of(graph,null,bv,path,true);
 		
 		
 		Optional<GraphPath<KnapsackVertex, KnapsackEdge>>  sp = ms.search();

@@ -6,7 +6,7 @@ import java.util.function.Predicate;
 import org.jgrapht.GraphPath;
 
 import utils.TriFunction;
-import graphs.alg.PDR.Sp;
+import graphs.alg.DPR.Sp;
 import graphs.virtual.EGraph;
 
 public interface EGraphPath<V, E> extends GraphPath<V, E> {

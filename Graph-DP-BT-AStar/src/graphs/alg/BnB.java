@@ -22,32 +22,32 @@ import graphs.virtual.EGraph;
 import graphs.virtual.EGraph.Type;
 import path.EGraphPath;
 
-public class BT<V, E, S> {
+public class BnB<V, E, S> {
 
-	public static <V, E, S> BT<V, E, S> ofGreedy(EGraph<V, E> graph) {
+	public static <V, E, S> BnB<V, E, S> ofGreedy(EGraph<V, E> graph) {
 		GreedyOnGraph<V, E> ga = GreedyOnGraph.of(graph);
 		Optional<GraphPath<V, E>> gp = ga.search();
 		if (gp.isPresent())
-			return BT.of(graph, null, gp.get().getWeight(), gp.get(), false);
+			return BnB.of(graph, null, gp.get().getWeight(), gp.get(), false);
 		else
-			return BT.of(graph, null, null, null, false);
+			return BnB.of(graph, null, null, null, false);
 	}
 
-	public static <V, E, S> BT<V, E, S> of(EGraph<V, E> graph, Function<GraphPath<V, E>, S> fsolution) {
-		return BT.of(graph, fsolution, null, null, false);
+	public static <V, E, S> BnB<V, E, S> of(EGraph<V, E> graph, Function<GraphPath<V, E>, S> fsolution) {
+		return BnB.of(graph, fsolution, null, null, false);
 	}
 
-	public static <V, E, S> BT<V, E, S> of(EGraph<V, E> graph) {
-		return BT.of(graph, null, null, null, false);
+	public static <V, E, S> BnB<V, E, S> of(EGraph<V, E> graph) {
+		return BnB.of(graph, null, null, null, false);
 	}
 
-	public static <V, E, S> BT<V, E, S> of(EGraph<V, E> graph, Double bestValue, GraphPath<V, E> optimalPath) {
-		return new BT<V, E, S>(graph, null, bestValue, optimalPath, false);
+	public static <V, E, S> BnB<V, E, S> of(EGraph<V, E> graph, Double bestValue, GraphPath<V, E> optimalPath) {
+		return new BnB<V, E, S>(graph, null, bestValue, optimalPath, false);
 	}
 
-	public static <V, E, S> BT<V, E, S> of(EGraph<V, E> graph, Function<GraphPath<V, E>, S> fsolution, Double bestValue,
+	public static <V, E, S> BnB<V, E, S> of(EGraph<V, E> graph, Function<GraphPath<V, E>, S> fsolution, Double bestValue,
 			GraphPath<V, E> optimalPath, Boolean withGraph) {
-		return new BT<V, E, S>(graph, fsolution, bestValue, optimalPath, withGraph);
+		return new BnB<V, E, S>(graph, fsolution, bestValue, optimalPath, withGraph);
 	}
 
 	private Comparator<Double> comparator = Comparator.naturalOrder();
@@ -62,7 +62,7 @@ public class BT<V, E, S> {
 	private Boolean withGraph = false;
 	protected Boolean stop = false;
 
-	BT(EGraph<V, E> graph, Function<GraphPath<V, E>, S> fsolution, Double bestValue, GraphPath<V, E> optimalPath,
+	BnB(EGraph<V, E> graph, Function<GraphPath<V, E>, S> fsolution, Double bestValue, GraphPath<V, E> optimalPath,
 			Boolean withGraph) {
 		this.graph = graph;
 		this.type = this.graph.type();

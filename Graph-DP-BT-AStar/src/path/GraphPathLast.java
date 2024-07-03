@@ -12,7 +12,7 @@ import org.jgrapht.Graphs;
 import utils.List2;
 import utils.Preconditions;
 import utils.TriFunction;
-import graphs.alg.PDR.Sp;
+import graphs.alg.DPR.Sp;
 import graphs.virtual.EGraph;
 
 public class GraphPathLast<V, E> extends GraphPath2<V,E> implements EGraphPath<V,E> {

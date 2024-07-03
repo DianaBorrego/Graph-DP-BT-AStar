@@ -8,12 +8,12 @@ import org.jgrapht.GraphPath;
 import examples.robots.RobotEdge;
 import examples.robots.RobotSolution;
 import examples.robots.RobotVertex;
-import graphs.alg.BT;
+import graphs.alg.BnB;
 import graphs.virtual.EGraph;
 import graphs.virtual.EGraph.Type;
 import path.EGraphPath.PathType;
 
-public class TestBT_robots {
+public class TestBnB_robots {
 
 	public static void main(String[] args) {
 		Locale.setDefault(Locale.of("en", "US"));
@@ -27,7 +27,7 @@ public class TestBT_robots {
 				.build();
 
 		
-		BT<RobotVertex, RobotEdge, RobotSolution> ms = BT.of(graph,RobotSolution::of,null, null,true);	
+		BnB<RobotVertex, RobotEdge, RobotSolution> ms = BnB.of(graph,RobotSolution::of,null, null,true);	
 		
 		Long t0 = System.nanoTime();
 		Optional<GraphPath<RobotVertex,RobotEdge>> path = ms.search();

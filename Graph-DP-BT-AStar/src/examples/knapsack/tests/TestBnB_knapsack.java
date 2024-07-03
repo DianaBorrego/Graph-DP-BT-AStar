@@ -11,7 +11,7 @@ import examples.knapsack.KnapsackEdge;
 import examples.knapsack.KnapsackHeuristic;
 import examples.knapsack.KnapsackVertex;
 import examples.knapsack.data.KnapsackData;
-import graphs.alg.BT;
+import graphs.alg.BnB;
 import graphs.alg.GreedyOnGraph;
 import graphs.virtual.EGraph;
 import graphs.virtual.EGraph.Type;
@@ -20,7 +20,7 @@ import path.EGraphPath.PathType;
 
 
 
-public class TestBT_knapsack {
+public class TestBnB_knapsack {
 
 
 	public static void main(String[] args) {
@@ -44,7 +44,7 @@ public class TestBT_knapsack {
 //		System.out.println(s0);
 		System.out.println(path.getEdgeList().stream().map(e->e.action()).toList());
 		
-		BT<KnapsackVertex,KnapsackEdge,KnapsackSolution> ms = BT.of(
+		BnB<KnapsackVertex,KnapsackEdge,KnapsackSolution> ms = BnB.of(
 				graph,
 				KnapsackVertex::getSolution,
 				path.getWeight(),path,true);		

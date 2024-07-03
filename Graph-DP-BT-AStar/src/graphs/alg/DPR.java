@@ -23,28 +23,28 @@ import org.jgrapht.Graphs;
 import org.jgrapht.graph.GraphWalk;
 import org.jgrapht.graph.SimpleDirectedGraph;
 
-public class PDR<V, E, S> {
+public class DPR<V, E, S> {
 
-	public static <V, E, S> PDR<V, E, S> ofGreedy(EGraph<V, E> graph) {
+	public static <V, E, S> DPR<V, E, S> ofGreedy(EGraph<V, E> graph) {
 		GreedyOnGraph<V, E> ga = GreedyOnGraph.of(graph);
 		Optional<GraphPath<V, E>> gp = ga.search();
 		if (gp.isPresent())
-			return PDR.of(graph, null, gp.get().getWeight(), gp.get(), false);
+			return DPR.of(graph, null, gp.get().getWeight(), gp.get(), false);
 		else
-			return PDR.of(graph, null, null, null, false);
+			return DPR.of(graph, null, null, null, false);
 	}
 
-	public static <V, E, S> PDR<V, E, S> of(EGraph<V, E> graph) {
-		return PDR.of(graph, null, null, null, false);
+	public static <V, E, S> DPR<V, E, S> of(EGraph<V, E> graph) {
+		return DPR.of(graph, null, null, null, false);
 	}
 
-	public static <V, E, S> PDR<V, E, S> of(EGraph<V, E> graph, Double bestValue, GraphPath<V, E> optimalPath) {
-		return new PDR<V, E, S>(graph, null, bestValue, optimalPath, false);
+	public static <V, E, S> DPR<V, E, S> of(EGraph<V, E> graph, Double bestValue, GraphPath<V, E> optimalPath) {
+		return new DPR<V, E, S>(graph, null, bestValue, optimalPath, false);
 	}
 
-	public static <V, E, S> PDR<V, E, S> of(EGraph<V, E> graph, Function<GraphPath<V, E>, S> fsolution,
+	public static <V, E, S> DPR<V, E, S> of(EGraph<V, E> graph, Function<GraphPath<V, E>, S> fsolution,
 			Double bestValue, GraphPath<V, E> optimalPath, Boolean withGraph) {
-		return new PDR<V, E, S>(graph, fsolution, bestValue, optimalPath, withGraph);
+		return new DPR<V, E, S>(graph, fsolution, bestValue, optimalPath, withGraph);
 	}
 
 	private EGraph<V, E> graph;
@@ -61,7 +61,7 @@ public class PDR<V, E, S> {
 	private Type type;
 	private Boolean stop = false;
 
-	PDR(EGraph<V, E> g, Function<GraphPath<V, E>, S> fsolution, Double bestValue, GraphPath<V, E> optimalPath,
+	DPR(EGraph<V, E> g, Function<GraphPath<V, E>, S> fsolution, Double bestValue, GraphPath<V, E> optimalPath,
 			Boolean withGraph) {
 		this.graph = g;
 		this.comparatorEdges = this.graph.type() == EGraph.Type.Min ? Comparator.naturalOrder()

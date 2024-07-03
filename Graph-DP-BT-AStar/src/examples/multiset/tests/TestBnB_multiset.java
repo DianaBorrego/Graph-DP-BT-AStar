@@ -11,13 +11,13 @@ import examples.multiset.MultisetHeuristic;
 import examples.multiset.MultisetVertex;
 import examples.multiset.data.MultisetData;
 import examples.multiset.data.MultisetSolution;
-import graphs.alg.BT;
+import graphs.alg.BnB;
 import graphs.alg.GreedyOnGraph;
 import graphs.virtual.EGraph;
 import graphs.virtual.EGraph.Type;
 import path.EGraphPath.PathType;
 
-public class TestBT_multiset {
+public class TestBnB_multiset {
 
 	public static void main(String[] args) {
 
@@ -39,7 +39,7 @@ public class TestBT_multiset {
 
 			System.out.println("\n#### BT Algorithm ####");
 			
-			// BT Algorithm
+			// BnB Algorithm
 			
 			EGraph<MultisetVertex, MultisetEdge> graph =
 					EGraph.virtual(start,goal,PathType.Sum, Type.Min)
@@ -56,11 +56,11 @@ public class TestBT_multiset {
 			
 			System.out.println("Greedy = "+r.getWeight()+"  == "+MultisetVertex.getSolution(r));
 			
-			BT<MultisetVertex, MultisetEdge, MultisetSolution> bta = BT.of(graph,
+			BnB<MultisetVertex, MultisetEdge, MultisetSolution> bta = BnB.of(graph,
 					MultisetVertex::getSolution, null, null, true);
 
 			if (rr.isSolution(r)) {
-				bta = BT.of(graph, MultisetVertex::getSolution, r.getWeight(), r, true);
+				bta = BnB.of(graph, MultisetVertex::getSolution, r.getWeight(), r, true);
 			}
 			Optional<GraphPath<MultisetVertex, MultisetEdge>> gp = bta.search();
 			System.out.println(MultisetVertex.getSolution(gp.get()));
